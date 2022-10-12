@@ -59,8 +59,7 @@ public class Ej03App {
 		System.out.println("Precio");
 		Double precio = sc.nextDouble();
 		System.out.println("Consumo");
-		String consumo_0 = sc.next().toUpperCase();
-		char consumo = consumo_0.charAt(0);
+		String consumo = sc.next().toUpperCase();
 		Electrodomesticos electrodomestico = new Electrodomesticos(precio,peso,color,consumo);
 		System.out.println("Color "+electrodomestico.getColor());
 		System.out.println("Consumo "+electrodomestico.getConsumo_energetico());

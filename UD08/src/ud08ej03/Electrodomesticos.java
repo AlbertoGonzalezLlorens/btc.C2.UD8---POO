@@ -6,6 +6,14 @@ public class Electrodomesticos {
 	final static char CONSUMO_ENERGETICO_DEFECTO = 'F';
 	final static double PESO_DEFECTO = 5;
 	
+	enum Colores {
+		BLANCO,NEGRO,ROJO,AZUL,GRIS
+	}
+	
+	enum Consumo {
+		A,B,C,D,E,F
+	}
+	
 	private double precio_base;
 	private String color;
 	private char consumo_energetico;
@@ -25,32 +33,29 @@ public class Electrodomesticos {
 		this.peso=peso;	
 	}
 	
-	public Electrodomesticos(double precio, double peso, String color, char consumo ) {
+	public Electrodomesticos(double precio, double peso, String color, String consumo ) {
 		this.precio_base=precio;
 		this.color=validaColor(color);
-		this.consumo_energetico=consumo;
+		this.consumo_energetico=validaConsumo (consumo);
 		this.peso=peso;	
 	}
 	
 	public static String validaColor(String color) {
-		switch(color) {
-		case "BLANCO":
-			break;
-		case "NEGRO":
-			break;
-		case "ROJO":
-			break;
-		case "AZUL":
-			break;
-		case "GRIS":
-			break;
-		default:
-			System.out.println("No se ha introducido un colo correcto, se pondra color default Blanco");
+		if (!(color.equals(Colores.BLANCO)||color.equals(Colores.NEGRO)||color.equals(Colores.ROJO)||color.equals(Colores.AZUL)||color.equals(Colores.GRIS))){
+			System.out.println("No se ha introducido un color correcto, se pondra color default Blanco");
 			color="BLANCO";
 		}
 		return color;
 	}
 	
+	public char validaConsumo (String consumo) {
+		if (!(consumo.equals(Consumo.A)||consumo.equals(Consumo.B)||consumo.equals(Consumo.C)||consumo.equals(Consumo.D)||consumo.equals(Consumo.E)||consumo.equals(Consumo.F))){
+			System.out.println("No se ha introducido un consumo correcto, se pondra color default F");
+			String consumo_energetico_string="F";
+			this.consumo_energetico = consumo_energetico_string.charAt(0);
+		}
+		return consumo_energetico;
+	}
 
 	public double getPrecio_base() {
 		return precio_base;
